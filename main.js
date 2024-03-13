@@ -3,7 +3,7 @@ import './style.css'
 const products = [
   {
     name: 'White Basic Shirt',
-    price: 289,
+    price: 29.95,
     nature: {
       color: ['White']
     },
@@ -14,7 +14,7 @@ const products = [
   },
   {
     name: 'Polo Marine Style',
-    price: 289,
+    price: 29.95,
     nature: {
       color: ['White', 'Black']
     },
@@ -25,7 +25,7 @@ const products = [
   },
   {
     name: 'Nappa Brown Jacket',
-    price: 289,
+    price: 99.95,
     nature: {
       color: ['Brown']
     },
@@ -36,7 +36,7 @@ const products = [
   },
   {
     name: 'Syntetic Black Jacket',
-    price: 289,
+    price: 45.95,
     nature: {
       color: ['Black']
     },
@@ -47,7 +47,7 @@ const products = [
   },
   {
     name: 'White Cotton Shirt',
-    price: 289,
+    price: 45.95,
     nature: {
       color: ['White']
     },
@@ -58,7 +58,7 @@ const products = [
   },
   {
     name: 'Reversible Bomber Jacket',
-    price: 289,
+    price: 60.95,
     nature: {
       color: ['Brown', 'Black']
     },
@@ -69,7 +69,7 @@ const products = [
   },
   {
     name: 'Battery Crewneck Sweater',
-    price: 289,
+    price: 45.95,
     nature: {
       color: ['Blue', 'Black', 'White']
     },
@@ -80,7 +80,7 @@ const products = [
   },
   {
     name: 'Wilder Flower Trucker Jacket',
-    price: 289,
+    price: 60.95,
     nature: {
       color: 'Blue'
     },
@@ -91,7 +91,7 @@ const products = [
   },
   {
     name: 'Womans ColdGear Shirt',
-    price: 289,
+    price: 30.95,
     nature: {
       color: 'Black'
     },
@@ -102,7 +102,7 @@ const products = [
   },
   {
     name: 'Trek Polar Fleece Full Zip',
-    price: 289,
+    price: 120.95,
     nature: {
       color: ['Black', 'Blue', 'White']
     },
@@ -113,7 +113,7 @@ const products = [
   },
   {
     name: 'Autumn Beis Coat',
-    price: 289,
+    price: 199.95,
     nature: {
       color: 'Beis'
     },
@@ -124,7 +124,7 @@ const products = [
   },
   {
     name: 'Autumn Black Coat',
-    price: 289,
+    price: 199.95,
     nature: {
       color: ['Blue', 'Black']
     },
@@ -136,15 +136,29 @@ const products = [
 ]
 
 const SELLERS = []
+const GENDERS = ['All', 'Male', 'Female']
 
+let GENDER = 'All'
 let SELLER = ''
 
 const filter = () => {
   const filtered = []
+  const searchPrice = parseFloat(document.getElementById('price-input').value)
+  const maxPrice = 200
 
   for (const product of products) {
-    if (SELLER.includes(product.seller)) {
-      filtered.push(product)
+    const isMatch = product.name.toLowerCase().includes(searchPrice)
+    const isWithinPriceRange = product.price <= maxPrice
+    const isGenderMatch = GENDER === 'All' || GENDER === product.gender
+
+    if (
+      isWithinPriceRange &&
+      isGenderMatch &&
+      (SELLER === '' || SELLER === product.seller)
+    ) {
+      if (isNaN(searchPrice) || product.price <= searchPrice) {
+        filtered.push(product)
+      }
     }
   }
   showProducts(filtered)
@@ -152,7 +166,7 @@ const filter = () => {
 
 const fillSellers = (shirts) => {
   SELLERS.splice(0)
-  for (const product of products) {
+  for (const product of shirts) {
     if (!SELLERS.includes(product.seller)) {
       SELLERS.push(product.seller)
     }
@@ -163,21 +177,64 @@ fillSellers(products)
 
 const createSelect = () => {
   const divFilters = document.querySelector('.filter')
+  const h2 = document.createElement('h2')
+  h2.textContent = 'Product Categories'
+  const inputPrice = document.createElement('input')
+  inputPrice.id = 'price-input'
+  inputPrice.type = 'text'
+  inputPrice.placeholder = 'Max price is 200'
+  inputPrice.max = 200
+
+  const gendersFilter = document.createElement('select')
+  gendersFilter.className = 'gender-filter'
+
+  const btnReset = document.createElement('button')
+  btnReset.id = 'reset-products'
+  btnReset.textContent = 'Reset Filters'
+  btnReset.addEventListener('click', filter)
+
+  const btnPrice = document.createElement('button')
+  btnPrice.id = 'button-price'
+  btnPrice.textContent = 'Find Product'
+
   const selectModel = document.createElement('select')
   selectModel.className = 'selecter'
 
+  const defaultOption = document.createElement('option')
+  defaultOption.value = ''
+  defaultOption.textContent = 'All Sellers'
+  selectModel.appendChild(defaultOption)
+
   for (const seller of SELLERS) {
     const option = document.createElement('option')
-
     option.value = seller
     option.textContent = seller
-
     selectModel.appendChild(option)
   }
-  divFilters.appendChild(selectModel)
 
+  for (const gender of GENDERS) {
+    const option = document.createElement('option')
+    option.value = gender
+    option.textContent = gender
+    gendersFilter.appendChild(option)
+  }
+
+  divFilters.appendChild(h2)
+  divFilters.appendChild(selectModel)
+  divFilters.appendChild(gendersFilter)
+  divFilters.appendChild(inputPrice)
+  divFilters.appendChild(btnPrice)
+  divFilters.appendChild(btnReset)
+
+  btnPrice.addEventListener('click', filter)
+  btnReset.addEventListener('click', resetFilters)
   selectModel.addEventListener('change', (event) => {
     SELLER = event.target.value
+    filter()
+  })
+
+  gendersFilter.addEventListener('change', (event) => {
+    GENDER = event.target.value
     filter()
   })
 }
@@ -186,7 +243,7 @@ const showProducts = (shirts) => {
   const productsSection = document.querySelector('.products')
   productsSection.innerHTML = ''
 
-  products.forEach((product) => {
+  shirts.forEach((product) => {
     const productDiv = document.createElement('div')
     productDiv.className = 'product'
     const productImg = document.createElement('img')
@@ -203,6 +260,28 @@ const showProducts = (shirts) => {
     productsSection.appendChild(productDiv)
   })
 }
+
+const resetFilters = () => {
+  document.getElementById('price-input').value = ''
+  document.querySelector('.selecter').value = ''
+  document.querySelector('.gender-filter').value = 'All'
+  SELLER = ''
+  GENDER = 'All'
+  filter()
+}
+
+const nav = document.querySelector('.nav')
+const open = document.querySelector('#open')
+const close = document.querySelector('#close')
+
+open.addEventListener('click', () => {
+  nav.classList.add('visible')
+  open.classList.add('hidden')
+})
+close.addEventListener('click', () => {
+  nav.classList.remove('visible')
+  open.classList.remove('hidden')
+})
 
 showProducts(products)
 createSelect()

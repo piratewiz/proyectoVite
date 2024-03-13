@@ -1,11 +1,17 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 600;
 
-  color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: #f6fff8;
+  --color-a: rgba(0, 0, 0, 0.87);
+  --background-color-1: #f6fff8;
+  --background-color-2: #57cc99;
+
+  --font-size-p: 16px;
+  --font-size-h1: 40px;
+  --font-size-h2: 25px;
+
+  --gap: 2rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,11 +28,46 @@
 }
 
 /* Estilos para el cabecero */
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+a {
+  color: var(--color);
+}
+
+p {
+  font-size: var(--font-size-p);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 20px;
+}
+
+header > nav > ul > li > a:hover {
+  color: #9d4edd;
+}
+
+header > .active {
+  display: none;
+}
+
+.open-menu,
+.close-menu {
+  display: none;
+}
+
+body {
+  background-color: var(--background-color-1);
 }
 
 .nav-ul {
@@ -47,7 +88,12 @@ header {
 
 .icons {
   display: flex;
-  gap: 2rem;
+  gap: var(--gap);
+}
+
+.icons > .imgs {
+  gap: 0.75rem;
+  display: flex;
 }
 
 .icons > div > a {
@@ -76,7 +122,7 @@ main > .background > img {
 main > .news > .rate-stars {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: var(--gap);
 }
 
 main > .news > .rate-stars > .stars {
@@ -94,7 +140,7 @@ main > .news > .rate-stars > span {
 main > .news {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--gap);
 }
 
 .stars {
@@ -157,24 +203,64 @@ main > .news > .title-news {
 
 #content > .img-content {
   display: flex;
-  gap: 2rem;
+  gap: var(--gap);
   width: 1000px;
 }
 
 #app {
   display: flex;
   margin: 30px;
-  background-color: #57cc99;
+  justify-content: space-between;
 }
 
 #app > .filter {
-  width: 80%;
+  width: 240px;
+  height: 500px;
+  padding: 30px;
   gap: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: center;
   align-items: center;
   margin-top: 200px;
+  background-color: #dafaec;
+  border-radius: 10px;
+  position: sticky;
+}
+
+.filter > select {
+  background-color: whitesmoke;
+  color: black;
+  font-weight: 600;
+  border-radius: 4px;
+  text-align: center;
+  padding: 4px;
+}
+
+.filter > input {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 4px;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+}
+
+.filter > button {
+  background-color: var(--color-a);
+  color: var(--background-color-1);
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: none;
+}
+
+.filter > button:hover {
+  background-color: #efe0f7;
+  color: var(--color-a);
+  cursor: pointer;
+  transition: 0.25s;
 }
 
 #app > .products {
@@ -183,7 +269,7 @@ main > .news > .title-news {
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
-  gap: 2rem;
+  gap: var(--gap);
 }
 
 .product > img {
@@ -223,9 +309,11 @@ main > .news > .title-news {
 #customize > article {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   background-color: #dafaec;
   padding: 30px;
   border-radius: 10px;
+  gap: var(--gap);
 }
 
 #customize > article > div {
@@ -241,6 +329,12 @@ main > .news > .title-news {
   width: 200px;
   color: whitesmoke;
   font-weight: 600;
+}
+
+#customize > article > .custom-img > img {
+  height: 300px;
+  width: fit-content;
+  border-radius: 10px;
 }
 
 footer {
@@ -282,4 +376,221 @@ footer > .newsletter > button {
   padding: 15px 20px;
   border-radius: 10px;
   border: none;
+}
+
+/* Estilos responsive */
+@media (max-width: 620px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  header > .icons {
+    display: none;
+  }
+
+  .nav {
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    margin-top: 200px;
+    width: 400px;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 15px;
+    background-color: rgba(202, 201, 201, 0.295);
+  }
+
+  .visible {
+    visibility: visible;
+  }
+
+  .open-menu {
+    display: block;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    position: absolute;
+    margin-top: 120px;
+    color: white;
+    background-color: var(--color-a);
+  }
+  .close-menu {
+    display: block;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    position: absolute;
+    margin-left: 85%;
+    margin-top: 12px;
+    color: black;
+    background-color: whitesmoke;
+  }
+
+  .title > img {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main > .background > img {
+    width: 460px;
+    height: fit-content;
+  }
+
+  .news > .rate-stars {
+    flex-direction: column;
+  }
+
+  .title-news {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta {
+    flex-direction: column;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #app > .filter {
+    display: grid;
+    background-color: var(--background-color-1);
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  #app > .filter > button {
+    background-color: #57cc99;
+  }
+
+  .product {
+    text-align: center;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  #customize {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    margin-top: -100px;
+  }
+
+  #customize > .text-info {
+    text-align: center;
+    align-items: center;
+    width: 400px;
+  }
+
+  #customize > article {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 400px;
+  }
+
+  #customize > article > div {
+    align-items: center;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 830px) and (max-width: 1200px) {
+  main {
+    flex-direction: column;
+  }
+
+  #customize {
+    gap: 2rem;
+    display: flex;
+  }
+
+  #customize > article {
+    flex-direction: column;
+  }
+
+  #customize > article > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  #customize > article > .custom-img > img {
+    height: 350px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 768px) {
+  header > .icons {
+    display: none;
+  }
+
+  header > .nav > .nav-ul > li > a {
+    font-size: 30px;
+  }
+
+  main {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  main > .news {
+    align-items: center;
+  }
+
+  main > .background > img {
+    height: 450px;
+  }
+
+  #app {
+    flex-direction: column;
+    align-items: center;
+    margin-top: -200px;
+  }
+
+  #app > .filter {
+    width: 50%;
+  }
+
+  #app > .products {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product > img {
+    width: 300px;
+    height: fit-content;
+  }
+
+  #customize {
+    flex-direction: column;
+    gap: var(--gap);
+    margin-top: -100px;
+  }
+
+  footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
 }

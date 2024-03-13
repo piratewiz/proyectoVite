@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       type="image/png"
@@ -10,11 +14,15 @@
       rel="icon"
       href=".../icons8-chandal-32.png"
     />
-    <title>Majeure Space</title>
+    <title>UrbanHue | Global Style</title>
   </head>
   <body>
     <header>
-      <nav>
+      <button id="open" class="open-menu"><i class="bi bi-list"></i></button>
+      <nav class="nav">
+        <button class="close-menu" id="close">
+          <i class="bi-arrow-up-left-square-fill"></i>
+        </button>
         <ul class="nav-ul">
           <li class="list"><a href="#">Space</a></li>
           <li class="list"><a href="#">Shop</a></li>
@@ -22,8 +30,8 @@
         </ul>
       </nav>
       <div class="title">
-        <img src="assets/shirt.png" alt="tshirt" />
-        <h1>Majeure Space</h1>
+        <img src="assets/shirt.png" alt="tshirt" class="open" />
+        <h1>UrbanHue</h1>
       </div>
       <div class="icons">
         <div class="imgs">
@@ -127,14 +135,17 @@
           <a href="#">Order Custom Shirts ></a>
         </div>
         <div class="custom-img">
-          <img src="" alt="" />
+          <img
+            src="https://i.pinimg.com/564x/41/21/e3/4121e3d67061522750f2a28bd311581a.jpg"
+            alt="nike"
+          />
         </div>
       </article>
     </section>
     <footer>
       <div class="location">
-        <h2>Majeure Space</h2>
-        <p>hello@majeurespace.io</p>
+        <h2>UrbanHue</h2>
+        <p>hello@urbanhue.io</p>
         <h3>+02 036 038 4042</h3>
         <p>3665 Paseo Place, Suite 0960 <br />San Diego</p>
       </div>
