@@ -119,6 +119,10 @@ main > .background > img {
   border-radius: 8px;
 }
 
+main > .heading-img {
+  display: none;
+}
+
 main > .news > .rate-stars {
   display: flex;
   align-items: center;
@@ -283,6 +287,12 @@ main > .news > .title-news {
   transition: 1s;
 }
 
+.products > .message {
+  font-size: 40px;
+  position: relative;
+  margin-right: 30%;
+}
+
 #customize {
   display: flex;
   justify-content: space-around;
@@ -379,7 +389,7 @@ footer > .newsletter > button {
 }
 
 /* Estilos responsive */
-@media (max-width: 620px) {
+@media (min-width: 320px) and (max-width: 480px) {
   * {
     box-sizing: border-box;
   }
@@ -416,7 +426,7 @@ footer > .newsletter > button {
     border-radius: 5px;
     font-size: 1.4rem;
     position: absolute;
-    margin-top: 120px;
+    margin-top: 130px;
     color: white;
     background-color: var(--color-a);
   }
@@ -443,8 +453,18 @@ footer > .newsletter > button {
   }
 
   main > .background > img {
-    width: 460px;
-    height: fit-content;
+    display: none;
+  }
+
+  main > .heading-img > img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .products > .product > img {
+    width: 250px;
+    height: auto;
   }
 
   .news > .rate-stars {
@@ -482,6 +502,16 @@ footer > .newsletter > button {
     text-align: center;
   }
 
+  .products {
+    text-align: center;
+  }
+
+  .products > .message {
+    width: auto;
+    font-size: 18px;
+    margin-left: 90px;
+  }
+
   .hidden {
     visibility: hidden;
   }
@@ -504,6 +534,11 @@ footer > .newsletter > button {
     text-align: center;
     align-items: center;
     width: 400px;
+  }
+
+  #customize > article > .custom-img > img {
+    width: 200px;
+    height: auto;
   }
 
   #customize > article > div {
