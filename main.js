@@ -109,7 +109,7 @@ const showProducts = (shirts) => {
   if (shirts.length === 0) {
     const noResultsMessage = document.createElement('p')
     noResultsMessage.className = 'message'
-    noResultsMessage.textContent = 'No hay resultados de búsqueda, lo sentimos.'
+    noResultsMessage.textContent = 'No search results...'
     productsSection.appendChild(noResultsMessage)
   } else {
     shirts.forEach((product) => {

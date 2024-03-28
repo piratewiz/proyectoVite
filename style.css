@@ -114,12 +114,13 @@ main {
 }
 
 main > .background > img {
-  height: 600px;
+  width: 1000px;
+  height: auto;
   border-radius: 8px;
 }
 
 main > .heading-img {
-  visibility: hidden;
+  display: none;
 }
 
 main > .news > .rate-stars {
@@ -288,8 +289,12 @@ main > .news > .title-news {
 
 .products > .message {
   font-size: 40px;
-  position: relative;
-  margin-right: 30%;
+  position: absolute;
+  margin-right: 1300px;
+  background-color: #dafaec;
+  text-align: center;
+  width: 500px;
+  border-radius: 10px;
 }
 
 #customize {
