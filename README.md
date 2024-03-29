@@ -1,13 +1,10 @@
-
 # Proyecto Vite, Tienda Online Funcional
 
 El proyecto consiste en crear una tienda online cuyo objetivo es conseguir a través de JavaScript pintar una cantidad de productos mediante DOM y una sección de filtros que se muestre una vez el cliente haya elegido por categoría.
 
-
 ## Acerca del Proyecto
 
 El proyecto está basado en la venta online de diferentes marcas especializadas en camisetas, camisas y chaquetas. Algo parecido a JD Sports o ASOS. El diseño de la web está inspirado en diseños similares encontrados en Figma.
-
 
 ## Requisitos JavaScript
 
@@ -33,11 +30,6 @@ El proyecto está basado en la venta online de diferentes marcas especializadas 
 
 [ ] Los productos tienen imágenes correctas que se ven en la carta de componente de cada uno
 
-## Demo
-
-Link directo para su visualización mediante Netlify:
-
-
 ## Instalación del programa
 
 Install my-project with npm
@@ -46,7 +38,7 @@ Install my-project with npm
   npm install proyectoVite
   cd my-project
 ```
-    
+
 ## Deployment
 
 Para desplegar el proyecto se ha utilizado en todo momento el siguiente
@@ -56,19 +48,16 @@ comando:
   npm run deploy
 ```
 
-
 ## Correcciones y puntos a tener en cuenta
 
-+ Tener cuidado posicionando el contenido y usar correctamente
+- Tener cuidado posicionando el contenido y usar correctamente
   sus respectivas medidas.
-+ No se visualizaba correctamente el contenido para móvil al principio, por lo que se ha cambiado a unos márgenes de entre 320 - 480 píxeles.
-+ Cuidado con funciones o líneas de código que no se estén utilizando o       ejecutando.
-+ Intentar crear funciones reutilizables, con el objetivo de no crear más espacio de lo innecesario y respetar la memoria. Simplificando esto se consigue una mejor organización del código, más limpio y visualmente más amigable.
-+ Faltaba mostrar un mensaje de aviso al cliente para cuando no encontrara algún producto según las categorías seleccionadas.
-+ Seguir practicando
-
+- No se visualizaba correctamente el contenido para móvil al principio, por lo que se ha cambiado a unos márgenes de entre 320 - 480 píxeles.
+- Cuidado con funciones o líneas de código que no se estén utilizando o ejecutando.
+- Intentar crear funciones reutilizables, con el objetivo de no crear más espacio de lo innecesario y respetar la memoria. Simplificando esto se consigue una mejor organización del código, más limpio y visualmente más amigable.
+- Faltaba mostrar un mensaje de aviso al cliente para cuando no encontrara algún producto según las categorías seleccionadas.
+- Seguir practicando
 
 ## Autor del proyecto
 
 - [@piratewiz](https://github.com/piratewiz)
-

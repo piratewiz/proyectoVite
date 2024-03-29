@@ -119,7 +119,7 @@ main > .background > img {
   border-radius: 8px;
 }
 
-main > .heading-img {
+main > .heading-img > img {
   display: none;
 }
 
@@ -416,7 +416,7 @@ footer > .newsletter > button {
     border-radius: 10px;
     padding: 6px;
     font-size: 15px;
-    background-color: rgba(202, 201, 201, 0.295);
+    background-color: #e4c1f9;
   }
 
   .visible {
@@ -447,10 +447,6 @@ footer > .newsletter > button {
     background-color: whitesmoke;
   }
 
-  .title > img {
-    display: none;
-  }
-
   main {
     display: flex;
     flex-direction: column;
@@ -461,10 +457,10 @@ footer > .newsletter > button {
   }
 
   main > .heading-img > img {
-    width: 250px;
+    width: 280px;
     height: auto;
     border-radius: 10px;
-    visibility: visible;
+    display: block;
   }
 
   .products > .product > img {
@@ -512,9 +508,12 @@ footer > .newsletter > button {
   }
 
   .products > .message {
-    width: auto;
+    width: 200px;
+    position: absolute;
+    background-color: #dafaec;
     font-size: 18px;
-    margin-left: 90px;
+    padding: 10px;
+    margin-left: 1300px;
   }
 
   .hidden {
@@ -582,7 +581,12 @@ footer > .newsletter > button {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 768px) {
+@media only screen and (max-width: 520px) {
+  header {
+    display: flex;
+    flex-direction: column;
+  }
+
   header > .icons {
     display: none;
   }
@@ -591,9 +595,71 @@ footer > .newsletter > button {
     font-size: 30px;
   }
 
+  main > .news > .rate-stars {
+    flex-direction: column;
+  }
+
+  main > .background > img {
+    display: none;
+  }
+
+  main > .heading-img > img {
+    display: block;
+    width: 380px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .nav {
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    margin-top: 200px;
+    width: 400px;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 6px;
+    font-size: 15px;
+    background-color: #e4c1f9;
+  }
+
+  .visible {
+    visibility: visible;
+  }
+
+  .open-menu {
+    display: block;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    position: absolute;
+    margin-top: 100px;
+    color: white;
+    background-color: var(--color-a);
+  }
+  .close-menu {
+    display: block;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    position: absolute;
+    margin-left: 85%;
+    margin-top: 12px;
+    color: black;
+    background-color: whitesmoke;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
   main {
     flex-direction: column;
     text-align: center;
+    display: flex;
+    flex-direction: column;
   }
 
   main > .news {
@@ -615,11 +681,12 @@ footer > .newsletter > button {
   }
 
   #app > .products {
+    text-align: center;
     grid-template-columns: 1fr 1fr;
   }
 
   .product > img {
-    width: 300px;
+    width: 280px;
     height: fit-content;
   }
 
@@ -627,6 +694,25 @@ footer > .newsletter > button {
     flex-direction: column;
     gap: var(--gap);
     margin-top: -100px;
+    text-align: center;
+  }
+
+  #customize > .text-info {
+    width: 420px;
+    text-align: center;
+  }
+
+  .text-info > a {
+    margin-left: 150px;
+  }
+
+  article {
+    width: 400px;
+    flex-direction: column;
+  }
+
+  article > div > a {
+    margin-left: 70px;
   }
 
   footer {
